@@ -1,0 +1,78 @@
+﻿@page
+@model WebApplication3.Pages.ProfileModel
+@{
+}
+<div class="container mt-5">
+<form method="Post">
+
+				<div class="mb-3">
+		<label class="form-label" asp-for="User.FullName"></label>
+		<input type="Text" asp-for="User.FullName" class="form-control" readonly />
+					<span asp-validaton-for="RModel.FullName" class="text-danger"></span>
+				</div>
+
+
+
+				<div class="mb-3">
+		<label class="form-label" asp-for="User.Gender"></label>
+		<input type="Text" asp-for="User.Gender" class="form-control" readonly />
+					<span asp-validaton-for="RModel.Gender" class="text-danger"></span>
+				</div>
+		
+
+				<div class="mb-3">
+		<label class="form-label" asp-for="User.MobileNo"></label>
+		<input type="Text" asp-for="User.MobileNo" class="form-control" readonly />
+					<span asp-validaton-for="RModel.MobileNo" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+		<label class="form-label" asp-for="User.DeliveryAddress"></label>
+		<input type="Text" asp-for="User.DeliveryAddress" class="form-control" readonly />
+					<span asp-validaton-for="RModel.DeliveryAddress" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+		<label class="form-label" asp-for="User.Email"></label>
+		<input type="Text" asp-for="User.Email" class="form-control" readonly />
+					<span asp-validaton-for="RModel.DeliveryAddress" class="text-danger"></span>
+				</div>
+
+					<div class="mb-3">
+		<label class="form-label" asp-for="creditCardNo"></label>
+			<input type="Text" asp-for="creditCardNo" class="form-control" readonly />
+					<span asp-validaton-for="RModel.DeliveryAddress" class="text-danger"></span>
+				</div>
+
+	<div class="mb-3">
+		<input type="hidden" asp-for="User.Photo" value="Temp" />
+		<label class="form-label" asp-for="User.Photo"></label>
+		<br />
+		<img id="imgPreview" style="height:300px;width:300px;object-fit:cover"
+			 src="@Model.User.Photo" alt="Profile Pic" />
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label" asp-for="User.AboutMe"></label>
+		<p>@Model.User.AboutMe</p>
+		
+		<span asp-validaton-for="RModel.AboutMe" class="text-danger"></span>
+	</div>
+
+	<div class="mb-3">
+					<button type="submit" class="btn btn-primary">Logout</button>
+	</div>
+</form>
+</div>
+
+<script>
+	function showImgPreview(input) {
+		if (input.files[0]) {
+			var uploadimg = new FileReader();
+			uploadimg.onload = function (displayimg) {
+				$("#imgPreview").attr('src', displayimg.target.result);
+			}
+			uploadimg.readAsDataURL(input.files[0]);
+		}
+	}
+</script>
